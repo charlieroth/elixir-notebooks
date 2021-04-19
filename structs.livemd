@@ -1,0 +1,53 @@
+# Structs
+
+## Definition
+
+Structs are extensions built on top of maps that provide compile-time checks and default values
+
+Here a struct `User` is being defined with a keyword list and providing default values if not provide during creation
+
+```elixir
+defmodule Person do
+  defstruct name: "Charlie", age: 25
+end
+```
+
+```elixir
+miranda = %Person{name: "Miranda", age: 23}
+```
+
+## Updating Fields
+
+Update field values using `Map` update syntax
+
+```elixir
+new_mir = %{miranda | name: "Mirandaaaa"}
+```
+
+## Accessing Fields
+
+Structs fields can only be accessed using dot `struct_name.field_name` syntax
+
+```elixir
+miranda.name
+```
+
+```elixir
+# Person struct does not implement the Access behaviour
+miranda[:name]
+```
+
+## Required Fields
+
+To ensure fields are provided at time of creation use the `@enforce_keys` macro
+
+```elixir
+defmodule Car do
+  @enforce_keys [:make]
+  defstruct [:make, :model]
+end
+```
+
+```elixir
+will_fail = %Car{model: "Model X"}
+```
