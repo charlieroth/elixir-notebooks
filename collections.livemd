@@ -2,6 +2,56 @@
 
 ## Lists
 
+```elixir
+l = [2.1, 2.2, 2.3]
+```
+
+```elixir
+# Delete element by value
+List.delete(l, 2.1)
+```
+
+```elixir
+# Get first element
+first = List.first(l)
+# Get last element
+last = List.last(l)
+{first, last}
+```
+
+```elixir
+dense_list = [2, [2.1, "Charlie"], 3, ["Miranda", 3.2]]
+List.flatten(dense_list)
+```
+
+```elixir
+# Remove element at index
+{popped, rest} = List.pop_at(l, 0)
+popped
+```
+
+```elixir
+List.replace_at(l, 0, 12)
+```
+
+List Concatenation
+
+```elixir
+l ++ dense_list
+```
+
+List Subtraction
+
+```elixir
+[1, 2, 3, 4] -- [4, 5, 6]
+```
+
+```elixir
+[head | tail] = l
+[other_head | other_tail] = tail
+{head, tail, other_head, other_tail}
+```
+
 ## Tuples
 
 ## Keyword Lists
