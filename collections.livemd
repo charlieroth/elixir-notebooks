@@ -54,6 +54,83 @@ List Subtraction
 
 ## Tuples
 
+Contiguously stored array-like data structure for fast indexing and length retrieval
+
+```elixir
+response = {:ok, "hello"}
+```
+
+```elixir
+elem(response, 0)
+```
+
+```elixir
+tuple_size(response)
+```
+
+```elixir
+# Put element at a particular index
+put_elem(response, 0, :error)
+```
+
 ## Keyword Lists
 
+#### Characteristics
+
+* Keys are atoms
+* Keys are ordered
+* Keys do not have to be unique
+
+```elixir
+[foo: "bar", hello: "world"]
+```
+
+```elixir
+[{:foo, "bar"}, {:hello, "world"}]
+```
+
 ## Maps
+
+Go-to key-value store
+
+Keys can be of any type and are unordered
+
+```elixir
+p = %{:name => "Charlie", "age" => 25}
+```
+
+Accessing keys is done with `.` syntax when key is type `atom`
+
+Otherwise access is done with `map[key]` notation
+
+```elixir
+{p.name, p["age"]}
+```
+
+Variables are allowed as map keys
+
+```elixir
+key = "birthdate"
+%{key => "12/08/1995"}
+```
+
+Maps use their own syntax for updating values
+
+If key does not exist, a `KeyError` will be raised
+
+```elixir
+m = %{foo: "bar", hello: "world"}
+m2 = %{m | foo: "baz"}
+{m, m2}
+```
+
+If `key` exists in map, `Map.put/3` will update the value at that `key` with `value` provided
+
+If `key` does not exist in map, `Map.put/3` will create new `key` in map with `value` provided
+
+```elixir
+m3 = %{foo: "bar", hello: "world"}
+m31 = Map.put(m3, :hello, "mate")
+m32 = Map.put(m3, :biz, "buz")
+[m3, m31, m32]
+```
